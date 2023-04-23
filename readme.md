@@ -25,4 +25,4 @@ Run the following command
 testcafe chrome testsuite.js
 ```
 
-###Example video of the run can be found in the videos folder in this projects
+### Example video of the run can be found in the videos folder in this projects
