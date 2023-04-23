@@ -1,4 +1,4 @@
-# Cymulate 
+# Xyte
 
 
 ## Installation
@@ -9,7 +9,7 @@ https://github.com/dhollander8991/xyte.git
 ```
 And after that run npm install.
 
-##Important note:
+## Important note:
 There is a chance you will need to install testcafe globaly
 with the following command:
 ```
