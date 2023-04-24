@@ -22,7 +22,7 @@ Navigte inside the project to the suite folder
 Run the following command
 
 ```
-testcafe chrome testsuite.js
+testcafe chrome testsuite.js -e
 ```
 
 ### Example video of the run can be found in the videos folder in this projects
