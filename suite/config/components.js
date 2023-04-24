@@ -60,14 +60,30 @@ const models = {
                     name: {
                         getText: async (value = 0) => {
                             if (typeof value == "string") {
-                                const res = await Selector(`[id*=cell-cell]`).withText(value).innerText;
+                                const res = await Selector(`[id*=cell-cell] > div`).withText(value).innerText;
                                 return res;
                             }
                             const res = await Selector(`#cell-cell_${value}_name > div`).innerText;
                             return res;
+                        },
+                        getCount: async (text) => {
+                            const res = await Selector(`[id*=cell-cell] > div`).withText(text).count;
+                            return res;
+                        }
+                    },
+                    options: {
+                        delete: {
+                            selector: ``,
+                            click: async (row = 0) => {
+                                await t.hover(`div#cell-cell_${row}_file_type`);
+                                await t
+                                    .click(`div#cell-cell_${row}_file_type + div button`)
+                                    .click(await Selector(`button`).withText('Delete'))
+                                    .click(`button + button`);
+                            }
                         }
                     }
-                }
+                },
             },
             addCommand: {
                 selector: Selector('button').withText("Add Command"),
@@ -104,6 +120,13 @@ const modals = {
             selector: `form + div + div button + button`,
             click: async () => {
                 await t.click(modals.addCommand.create.selector)
+            }
+        },
+        errorMessage: {
+            selector: `div.modal-body > p`,
+            getText: async () => {
+                const res = await Selector(modals.addCommand.errorMessage.selector).innerText;
+                return res;
             }
         }
     }
